@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Credit card App</title>
+  <%=csrf_meta_tags%>
+  <meta name="description" content="<%= @page_description %>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <% unless current_user&.admin%>
+    <%= render 'shared/nav' %>
+  <%else%>
+  <%= render 'shared/navbar' %>
+  <%end%>
+</head>
+<body>
+ <p class="notice"><%= notice %></p>
+ <p class="alert"><%= alert %></p>
+
+  <%= yield %>
+</body>
+</html

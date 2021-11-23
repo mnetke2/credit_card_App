@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
+    <meta name="author" content="Ansonika">
+    <title>Credit Card App</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  </head>
+  <body class="fixed-nav sticky-footer" id="page-top">
+    <%= render "shared/navbar" %>
+    <%# <%= render "shared/sidebar" %>
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <% flash.each do |type, msg| %>
+          <p class="alert bg-danger">
+            <%= msg %>
+          </p>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

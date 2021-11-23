@@ -1,0 +1,52 @@
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+<div class="card">
+  <div class="card-header">
+    Credit Card Applications
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-12">
+      <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Credit Limit</th>
+                <th>System Recommendation</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @loans.each do |loan|%>
+            <tr>
+                <td><%=loan.user.email%></td>
+                <td><%=loan.credit_limit%></td>
+                <td>
+                
+                <%if loan.credit_score > 2 %>
+                  <%=check_box_tag 'approved', true, loan.approved,
+                    onchange: "$(this).data('params', 'approved=' + this.checked)",
+                    data: { remote: true, url: approve_admin_loan_path(id: loan.id), method: :patch }
+                  %> 
+                  <% if loan.approved %>
+                    Approved
+                  <%else%>
+                    Approve
+                  <%end%>
+                <%else%>
+                  Reject
+                <%end%>
+              </td>
+            </tr>
+          <%end%>
+          </tbody>
+    </table>      
+    </div>
+    </div>
+  </div>
+<script>
+$(document).ready( function () {
+    $('#example').DataTable();
+} );
+</script>
