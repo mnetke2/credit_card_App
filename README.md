@@ -12,18 +12,20 @@ Things you may want to cover:
 * System dependencies
   Bundler 2.2.15
 
-* Database creation
+* Database 
   - Postgres latest version
 
 * Database initialization
-    username: < Your User Name>
-    password: < Your User Password >
-    host: localhost
-    
+  - username:  < Your User Name>
+  - password: < Your User Password >
+  - host: localhost
+
 * Run project 
   - bundle install
   - rake db:create db:migrate db:seed
+  - rails s
+  - open localhost:3000
 
 * Admin User
-  - Email: 'admin@creditapp.com'
-  - password: 'password@123'
+  - Email: admin@creditapp.com
+  - password: password@123
